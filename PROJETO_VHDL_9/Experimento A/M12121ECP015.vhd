@@ -1,0 +1,58 @@
+-- PROJETO TABELA VERDADE
+
+
+-- declaração por vetores
+--ENTITY M12121ECP015 IS
+--PORT(A,B,C: IN BIT; 
+--			S: OUT BIT
+--);
+--
+--
+--END M12121ECP015;
+--
+--
+--ARCHITECTURE CIR OF M12121ECP015 IS
+--SIGNAL VET: BIT_VECTOR (2 DOWNTO 0); --MAIS SIGNIFICATIVO PARA O MENOS (A,B,C)
+--BEGIN
+--	VET<= A & B & C;
+--	WITH VET SELECT -- SELECIONAR ATRIBUIÇÃO PARA SAÍDA
+--	S<='1' WHEN "000",
+--		'0' WHEN "001",
+--		'1' WHEN "010",
+--		'1' WHEN "011",
+--		'1' WHEN "100",
+--		'0' WHEN "101",
+--		'1' WHEN "110",
+--		'0' WHEN "111";
+--		-- ATENÇÃO ASPAS SIMPLES IMPLICA EM ?? ENQUANTO ASPAS DUPLAS IMPLICA EM ??
+--END CIR;
+
+
+
+
+
+-----------------------------------------------------------
+--declaração por inteiros
+
+ENTITY M12121ECP015 IS
+PORT(X: IN INTEGER RANGE 0 TO 7; 
+			S: OUT BIT
+);
+
+
+END M12121ECP015;
+
+
+ARCHITECTURE CIR OF M12121ECP015 IS
+BEGIN
+	WITH X SELECT
+	S<='1' WHEN 0,
+		'0' WHEN 1,
+		'1' WHEN 2,
+		'1' WHEN 3,
+		'1' WHEN 4,
+		'0' WHEN 5,
+		'1' WHEN 6,
+		'0' WHEN 7;
+		-- ATENÇÃO ASPAS SIMPLES IMPLICA EM ?? ENQUANTO ASPAS DUPLAS IMPLICA EM ??
+END CIR;
